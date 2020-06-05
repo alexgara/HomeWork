@@ -1,3 +1,5 @@
+package HW5;
+
 public class Workers {
 
     private String surname;
