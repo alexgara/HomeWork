@@ -6,10 +6,10 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class SettingsWindow extends JFrame {
-    private static final int WINDOW_POS_X = GameWindow.WINDOW_POS_X + 50;
-    private static final int WINDOW_POS_Y = GameWindow.WINDOW_POS_Y + 50;
-    private static final int WINDOW_WIDTH = GameWindow.WINDOW_WIDTH - 100;
-    private static final int WINDOW_HEIGHT = 400;
+    static final int WINDOW_POS_X = GameWindow.WINDOW_POS_X + 50;
+    static final int WINDOW_POS_Y = GameWindow.WINDOW_POS_Y + 50;
+    static final int WINDOW_WIDTH = GameWindow.WINDOW_WIDTH - 100;
+    static final int WINDOW_HEIGHT = 400;
 
     private static final int MIN_FIELD_SIZE = 3;
     private static final int MAX_FIELD_SIZE = 10;
@@ -29,17 +29,19 @@ public class SettingsWindow extends JFrame {
     public SettingsWindow(GameWindow gameWindow){
         this.gameWindow = gameWindow;
         setBounds(WINDOW_POS_X, WINDOW_POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
-        setTitle("Setting game");
+        setTitle("Настройки игры");
+
+        Font fontSmall = new Font("SputnikDisplay Bold", Font.BOLD, 14);
 
         setLayout(new GridLayout(8,1));
 
-        add(new JLabel(" Select game mode:"));
+        add(new JLabel(" Выбери игровой режим:"));
         add(radioButtonHvsAi);
         add(radioButtonHvsH);
         gameMode.add(radioButtonHvsAi);
         gameMode.add(radioButtonHvsH);
 
-        add(new JLabel(" Select field's size:"));
+        add(new JLabel(" Выбери размер поля"));
         sliderFieldSize.setMajorTickSpacing(1);
         sliderFieldSize.setPaintLabels(true);
         sliderFieldSize.setPaintTicks(true);
@@ -51,12 +53,16 @@ public class SettingsWindow extends JFrame {
         sliderDotsToWin.setPaintTicks(true);
         add(sliderDotsToWin);
 
+        setFont(fontSmall);
+
         sliderFieldSize.addChangeListener(e ->{
             sliderDotsToWin.setMaximum(sliderFieldSize.getValue());
         });
 
-        JButton buttonStartNewGame = new JButton("StartNewGame");
-        buttonStartNewGame.setBackground(Color.cyan);
+        JButton buttonStartNewGame = new JButton("Начать игру");
+        buttonStartNewGame.setFont(fontSmall);
+        buttonStartNewGame.setBackground(Color.darkGray);
+        buttonStartNewGame.setForeground(Color.white);
         add(buttonStartNewGame);
 
         buttonStartNewGame.addActionListener(e ->{

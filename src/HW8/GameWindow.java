@@ -5,10 +5,10 @@ import java.awt.*;
 
 public class GameWindow extends JFrame {
 
-    public static final int WINDOW_POS_X = 400;
-    public static final int WINDOW_POS_Y = 400;
-    public static final int WINDOW_WIDTH = 600;
-    private static final int WINDOW_HEIGHT = 650;
+    static final int WINDOW_POS_X = 400;
+    static final int WINDOW_POS_Y = 400;
+    static final int WINDOW_WIDTH = 600;
+    static final int WINDOW_HEIGHT = 750;
 
     private SettingsWindow settingsWindow;
     private BattleMap battleMap;
@@ -17,6 +17,7 @@ public class GameWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(WINDOW_POS_X, WINDOW_POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
         setTitle("TICTACTOE");
+        setBackground(Color.white);
 
         settingsWindow = new SettingsWindow(this);
         battleMap = new BattleMap(this);
@@ -25,7 +26,7 @@ public class GameWindow extends JFrame {
         Font fontBig = new Font("SputnikDisplay Bold", Font.BOLD, 100);
         Font fontSmall = new Font("SputnikDisplay Bold", Font.BOLD, 14);
 
-        JPanel panel = new JPanel(new GridLayout(1, 2));
+        JPanel panel = new JPanel(new GridLayout(1,1));
 
         JPanel panelTitle = new JPanel(new GridLayout(1, 2));
 
@@ -33,19 +34,19 @@ public class GameWindow extends JFrame {
         label.setBounds(300, 300, 400, 200);
         panelTitle.add(label);
         label.setFont(fontBig);
-        label.setBackground(Color.white);
-        label.setForeground(Color.orange);
+        panelTitle.setBackground(Color.white);
+        label.setForeground(Color.darkGray);
 
         JButton buttonStartNewGame = new JButton("Новая игра");
         panel.add(buttonStartNewGame);
         buttonStartNewGame.setFont(fontSmall);
-        buttonStartNewGame.setBackground(Color.orange);
+        buttonStartNewGame.setBackground(Color.darkGray);
         buttonStartNewGame.setForeground(Color.white);
 
         JButton buttonExit = new JButton("Выход");
         panel.add(buttonExit);
         buttonExit.setFont(fontSmall);
-        buttonExit.setBackground(Color.orange);
+        buttonExit.setBackground(Color.darkGray);
         buttonExit.setForeground(Color.white);
 
         buttonStartNewGame.addActionListener(e -> {
@@ -57,7 +58,7 @@ public class GameWindow extends JFrame {
         });
 
         add(panel, BorderLayout.SOUTH);
-        add(panelTitle, BorderLayout.CENTER);
+        add(panelTitle, BorderLayout.NORTH);
 
         setVisible(true);
     }

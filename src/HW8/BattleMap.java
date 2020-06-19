@@ -20,7 +20,7 @@ public class BattleMap extends JPanel {
 
     public BattleMap(GameWindow gameWindow) {
         this.gameWindow = gameWindow;
-        setBackground(Color.ORANGE);
+        setBackground(Color.white);
 
         addMouseListener(new MouseAdapter() {
             @Override
